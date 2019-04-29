@@ -36,6 +36,110 @@
 ### 머신러닝의 종류들
 
 1. **Supervised Learning** : Task driven ( Regression / Classification )
+    - Label이 된 데이터로 학습을 하는 것
+    - SVM, Decision Tree
+
 2. **Unsupervised Learning** : Data driven ( Clustering )
+    - Label이 없는 데이터로 학습을 하는 것
+    - 데이터만 있을때, 알아서 분류해봐라
+    - Topic Modelling
+        - LSA, LSI, LDA
+
 3. **Reinforcement Learning** : Algorithm learns to react to an enviroment, 이번 교육에서는 진행되지 않으니 참고하자.
+
+이 중에서 NLP에서 더 들어간다면, 아래와 같이 여러가지 분야가 있다
+
+- NLP의 적용분야
+    - translation
+    - classfication / clustering
+    - information extraction
+    - speech to text / text to speech
+
+> Statistics & Probabilities
+
+- Statistics : likilihood
+- Probabilities : Bayes theorom
+
+---
+
+### 그래서 우리는 NLP에서 무얼 배울까?
+
+자연어처리(NLP)에서는 다루는 데이터의 크기가 매우 방대하기 때문에 통계적인(Statistical) 방법과 기계학습(Machine Learning) 방법빈도를 기반으로 추론하는 방법과 Knowledge, Language, Corpus 등 여러가지 토픽들이 있다. 사실 더 들어가면 Natural Language 생성과 이해가 있다. 
+
+NLP의 하위 분야들
+- Machine Translation
+- Information Retrival
+- Sentiment Analysis
+- Information Extraction
+- **Question Answering** -> 이게 사실상 NLP의 목표
+
+---
+
+### 자연어를 조금더 살펴보자
+자연어 : 정보전달의 수단이며 인간 고유의 능력이며 인공어에 대응되는 개념
+인공어 : 특정 목적을 위해 인위적으로 만든 언어, 자연어에 비해 엄격한 구문을 가짐
+
+자연어처리란 컴퓨터를 통해서 자연어를 어떻게 다루는지 알아보는 학문이다. 또한 인간의 언어를 이해하고 이를 바탕으로 각종 정보처리에 적용함으로써 보다 빠르고 편리한 정보 획득한다.
+
+#### 어절/단어/형태소
+- 어절 : 양쪽에 공백을 갖는 띄어쓰기 단위의 문자열
+- 단어/형태소 : 단일 품사를 갖는 단위 / 사전에 등록되어 있는 색인어의 집합
+
+#### 형태론적 다양성
+- 첨가어
+    - 한국어, 일본어, 터키어 등
+    - 다수의 형태소가 결합하여 어절 형성
+    - 터키어는 평균 7개의 형태소가 결합
+    - 희안하게 일본어는 한국어와 비슷하기 때문에 한글 분석을 잘한다.
+- 굴절어
+    - 라틴어, 영어와 불어 등은 첨가어와 굴절어의 특징이 모두 있음
+    - 어간이 변함, 예를 들면 run,ran,run
+    - 한국어와 다르게 영어는 단어 하나가 형태소 하나이기 때문에 처리과정이 단순, 즉 언어적인 특성상 분석이 훨씬 쉬움
+- 스와히리어
+    - 수(number)를 위한 형태소가 문두에 붙음
+- 아랍어
+    - 자음이 어간이고, 모음이 시제, 수 등을 표현
+    - ktb(쓰다), kAtAb(능동), KUtlb(수동)
+    - kttb(쓰게하다), kAttAb(능동), KUttlb(수동)
+
+
+#### 통사적 다양성
+- Postfix 언어
+    - 동사가 문장의 뒤에 위치
+    - 한국어, 일본어 등... 추후에 Bag of Word에 대해서 알아봄
+    - 특히나 구어체는 분석하기에 훨씬 어려움
+- Infix 언어
+    - 동사가 문장의 중간에 위치
+    - 영어, 불어 등
+- Prefix 언어
+    - 동사가 문장의 처음에 위치
+    - 아일랜드어
+
+---
+
+### 일반적인 자연어 분석 4단계
+#### 1. 자연어문장 입력  
+
+#### 2. **형태소 분석(Morphological Analysis)**  
+- 한국어는 형태소를 모두 쪼개서 최소한의 의미를 갖는 단위로 모두 쪼개자, 그렇게 해서 누가 명사고 누가 동사인지
+- 입력된 문자열을 분석해서 형태소(morpheme)라는 최소 의미 단위로 분리
+- 사전 정보와 형태소 결합 정보 이용
+- 정규 문법으로 분석 가능
+- 언어에 따라 난이도가 다름
+- 과연 형태소분석이 잘 될까?  
+    - 나는 책을 읽었다. -> 나 + 는
+    - 하늘을 나는 새를 보라. -> 나다 + 는
+    - 파릇파릇한 싹이 나는 계절이다. -> 나다 + 는
+- 형태소 분석의 어려운 점을 나열하자면 중의성과 접두사/접미사 처리, 등록되지 않는 단어처리, 한국어 형태소 결합의 예('친구에게서였었다라고')
+
+#### 3. **구문 분석(Syntax Analysis)**  
+- 누가 주어이고, 누가 서술어인지 파악하자
+
+#### 4. **의미 분석(Semantic Analysis)**  
+- 여기서는 WordEmbeding, Word2Vec, Topic 분석 등등
+
+#### 5. **화용 분석(Pragmatic Analysis)**  
+- 사실상 이게 가능하면, 컴퓨터랑 대화할 수 있음
+
+#### 6. 분석 결과  
 
