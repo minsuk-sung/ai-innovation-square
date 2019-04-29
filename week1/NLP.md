@@ -134,12 +134,64 @@ NLP의 하위 분야들
 
 #### 3. **구문 분석(Syntax Analysis)**  
 - 누가 주어이고, 누가 서술어인지 파악하자
+- 문법(Grammar) : 문장의 구조적 성질을 규칙으로 표현한 것, a set of rewrite rules
+- 구문 분석기(Parser) : 문법을 이용하여 문장의 구조를 찾아내는 과정, 문장의 구문 구조는 트리형태로 표현가능, 즉, 몇 개의 형태소들이 모여서 구문요소를 이루고, 그 구문요소들간의 결합구조를 트리형태로써 구문 구조를 이루게 됨
+- CFG : Context Free Grammar
+- Grammar Rule을 이용해서 문장을 생성(sentence generation)할 수 있고, 분석(sentence parsing)할 수도 있음
+    - Top-down : S NP VP > N VP > John VP > John V NP > John ate ART N > ...
+    - Bottom-up : John ate the apple > N V ART N > NL V ART N > NP V NP > NP VP > S
+- 구문 분석도 모호함 문제가 발생
+    - I saw the man on the hill with the telescope
+    - 이러한 간단한 문장이 5가지로 분석
+- 여기가 언어학적인 레벨에서 할 수 있는 한계
 
 #### 4. **의미 분석(Semantic Analysis)**  
-- 여기서는 WordEmbeding, Word2Vec, Topic 분석 등등
+- 통사 분석 결과에 해석을 가하여 문장이가진 의미를 분석
+- 형태소가 가진 의미를 표현하는 지식 표현 기법이 요구됨
+- 통사적으로 옳으나 의미적으로 틀린 문장이 있을 수 있음, 문법적으로만 옳으면 안됨
+    - 돌이 걸어간다. cf) 사람이 걸어간다
+    - 바람이 달린다. cf) 말이 달린다
+    - 사람이 사과를 먹는다 (O)
+    - 사람이 ~~비행기~~를 먹는다 (X)
+    - ~~비행기~~가 사과를 먹는다 (X)
+- 의미 조차도 모호함
+    - 말이 많다. 이때 말이 horse인지 speech인지
+    - 사실 여기가 잘 안되기 때문에 화용분석이 잘 안되는 것임
+- 여기서는 위의 문제들을 해결하기 위해서  WordEmbeding, Word2Vec, Topic 분석 등등
 
 #### 5. **화용 분석(Pragmatic Analysis)**  
 - 사실상 이게 가능하면, 컴퓨터랑 대화할 수 있음
+- 문장이 실세계와 가지는 연관관계 분석
+- 지시, 간접화법 등의 분석
+    - Anaphora : 대명사의 지시 대상
+    - Speech Act : 상대방에게 행동을 요구하는 언어 행위
 
 #### 6. 분석 결과  
+
+#### 전체적인 전처리 과정
+![](../img/nlp-process.png)
+
+---
+
+### 챗봇(Chatbot)
+영화 그녀(Her)
+심심이와 왓슨(Watson) : 기계가 문맥과 의도를 파악할 수 있는가에 대한 이야기
+
+**Siri / Google Assistant / Bixby**
+
+![](../img/type-of-chatbot.png)
+
+---
+
+### NLP Application Gap
+- 연구 수준 : 이상적인 환경을 가정
+    - 정확한 입력
+    - 학습 데이터 존재
+    - 정답이 존재
+    - 대상 데이터가 고정
+- 상용화 수준 : 다양한 비정상 상황 가정
+    - 부정확한 입력
+    - 학습데이터 구축의 어려움
+    - 정답을 알 수 없는 문제도 있음
+    - 실시간으로 대상 데이터 변함, Hadoop,Spark 등
 
